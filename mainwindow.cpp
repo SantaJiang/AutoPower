@@ -178,6 +178,9 @@ void MainWindow::slotTimeOut()
     default:
         break;
     }
+
+    ui->pushButton_execute->setChecked(false);
+    on_pushButton_execute_clicked(false);
 }
 
 void MainWindow::shutdown()
