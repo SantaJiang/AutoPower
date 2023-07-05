@@ -10,6 +10,6 @@
 * 软件代码已经尽量简化。
 
 ### Screenshots：
-![image](https://github.com/SantaJiang/AutoPower/releases/screenshot.png)
+![image]([https://github.com/SantaJiang/AutoPower/releases/screenshot.png](https://github.com/SantaJiang/AutoPower/blob/main/screenshot.png))
 ### Executable download address：
 https://github.com/SantaJiang/AutoPower/releases
