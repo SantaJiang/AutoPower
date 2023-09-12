@@ -3,14 +3,7 @@
 #include <QTime>
 #include <QDebug>
 #include <QCloseEvent>
-#include <Windows.h>
-#include "powrprof.h"
-#include "winuser.h"
-#include "processthreadsapi.h"
 #include "trayicon.h"
-#pragma comment(lib,"PowrProf.lib")
-#pragma comment(lib,"User32.lib")
-#pragma comment(lib,"Advapi32.lib")
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -29,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     m_worker = new Worker(this);
     connect(m_worker, SIGNAL(timeisup()), this, SLOT(slotTimeOut()));
+
+    m_powerOp = new PowerOp(this);
 
     ui->widget_tips->setVisible(false);
 
@@ -152,27 +147,27 @@ void MainWindow::slotTimeOut()
     switch (eTaskType) {
     case SHUTDOWN:
     {
-        shutdown();
+        m_powerOp->shutdown();
         break;
     }
     case REBOOT:
     {
-        reboot();
+        m_powerOp->reboot();
         break;
     }
     case HIBERNATE:
     {
-        hibernate();
+        m_powerOp->hibernate();
         break;
     }
     case SLEEP:
     {
-        sleep();
+        m_powerOp->sleep();
         break;
     }
     case CLOSEMONITOR:
     {
-        closeMonitor();
+        m_powerOp->closeMonitor();
         break;
     }
     default:
@@ -183,66 +178,4 @@ void MainWindow::slotTimeOut()
     on_pushButton_execute_clicked(false);
 }
 
-void MainWindow::shutdown()
-{
-    //强行关机..
-    HANDLE hToken;
-    TOKEN_PRIVILEGES tkp;
-    //获取进程标志..
-    if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken))
-        return;
-    //获取关机特权的LUID..
-    LookupPrivilegeValue(NULL, SE_SHUTDOWN_NAME,    &tkp.Privileges[0].Luid);
-    tkp.PrivilegeCount = 1;
-    tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
-    //获取这个进程的关机特权..
-    AdjustTokenPrivileges(hToken, false, &tkp, 0, (PTOKEN_PRIVILEGES)NULL, 0);
-    if (GetLastError() != ERROR_SUCCESS)
-        return;
-    // 强制关闭计算机..
-    if ( !ExitWindowsEx(EWX_SHUTDOWN | EWX_FORCE, 0))
-        return;
 
-    return;
-}
-
-void MainWindow::reboot()
-{
-    //重启计算机..
-    HANDLE hToken;
-    TOKEN_PRIVILEGES tkp;
-    //获取进程标志..
-    if (!OpenProcessToken(GetCurrentProcess(), TOKEN_ADJUST_PRIVILEGES | TOKEN_QUERY, &hToken))
-        return;
-    //获取关机特权的LUID..
-    LookupPrivilegeValue(NULL, SE_SHUTDOWN_NAME,    &tkp.Privileges[0].Luid);
-    tkp.PrivilegeCount = 1;
-    tkp.Privileges[0].Attributes = SE_PRIVILEGE_ENABLED;
-    //获取这个进程的关机特权..
-    AdjustTokenPrivileges(hToken, false, &tkp, 0, (PTOKEN_PRIVILEGES)NULL, 0);
-    if (GetLastError() != ERROR_SUCCESS)
-        return;
-    // 强制重启计算机..
-    if ( !ExitWindowsEx(EWX_REBOOT| EWX_FORCE, 0))
-        return;
-
-    return;
-}
-
-void MainWindow::hibernate()
-{
-    // 让系统进入休眠 ..
-    SetSuspendState(TRUE, TRUE, FALSE);
-}
-
-void MainWindow::sleep()
-{
-    // 让系统进入睡眠..
-    SetSuspendState(FALSE, TRUE, FALSE);
-}
-
-void MainWindow::closeMonitor()
-{
-    //关闭显示器..
-    SendMessage(HWND_BROADCAST, WM_SYSCOMMAND, SC_MONITORPOWER, (LPARAM) 2);
-}

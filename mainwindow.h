@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QEvent>
 #include "worker.h"
+#include "powerop.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -47,17 +48,11 @@ private slots:
     void slotTimeOut();
 
 private:
-    void shutdown();
-    void reboot();
-    void sleep();
-    void hibernate();
-    void closeMonitor();
-
-private:
     Ui::MainWindow *ui;
     double m_scaleFactor;
     bool m_bHinted = false;
     Worker* m_worker;
+    PowerOp* m_powerOp;
 
     TaskType eTaskType;
     TimeSerial eTimeSerial;

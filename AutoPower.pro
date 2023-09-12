@@ -11,11 +11,13 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    powerop.cpp \
     trayicon.cpp \
     worker.cpp
 
 HEADERS += \
     mainwindow.h \
+    powerop.h \
     trayicon.h \
     worker.h
 
