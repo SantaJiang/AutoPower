@@ -36,6 +36,9 @@ public:
 protected:
     void closeEvent(QCloseEvent *event);
 
+public slots:
+    void slotShowWindow();
+
 private slots:
     void on_pushButton_execute_clicked(bool checked);
     void on_radioButton_shutdown_clicked();
@@ -46,6 +49,9 @@ private slots:
     void on_radioButton_hibernate_clicked();
     void on_radioButton_reboot_clicked();
     void slotTimeOut();
+
+private:
+    void initDateTime();
 
 private:
     Ui::MainWindow *ui;

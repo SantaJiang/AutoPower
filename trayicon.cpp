@@ -65,7 +65,7 @@ void TrayIcon::setExitDirect(bool exitDirect)
 void TrayIcon::setMainWidget(QWidget *mainWidget)
 {
     this->mainWidget = mainWidget;
-    menu->addAction(tr("MainWindow"), mainWidget, SLOT(showNormal()));
+    menu->addAction(tr("MainWindow"), mainWidget, SLOT(slotShowWindow()));
 
     if (exitDirect)
     {

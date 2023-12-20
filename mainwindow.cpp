@@ -14,11 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     eTaskType = SHUTDOWN;
     eTimeSerial = APPOINTEDTIME;
 
-    ui->dateEdit->setDateTime(QDateTime::currentDateTime());
-    ui->dateEdit->setMinimumDate(QDate::currentDate());
-    QTime time = QTime::currentTime();
-    time = time.addSecs(600);
-    ui->timeEdit->setTime(time);
+    initDateTime();
 
     m_worker = new Worker(this);
     connect(m_worker, SIGNAL(timeisup()), this, SLOT(slotTimeOut()));
@@ -90,6 +86,17 @@ void MainWindow::closeEvent(QCloseEvent *event)
         return;
     }
     return QMainWindow::closeEvent(event);
+}
+
+void MainWindow::slotShowWindow()
+{
+    if(!m_worker->isRunning())
+    {
+        m_bHinted = false;
+        initDateTime();
+    }
+
+    showNormal();
 }
 
 void MainWindow::on_pushButton_execute_clicked(bool checked)
@@ -176,6 +183,15 @@ void MainWindow::slotTimeOut()
 
     ui->pushButton_execute->setChecked(false);
     on_pushButton_execute_clicked(false);
+}
+
+void MainWindow::initDateTime()
+{
+    ui->dateEdit->setDateTime(QDateTime::currentDateTime());
+    ui->dateEdit->setMinimumDate(QDate::currentDate());
+    QTime time = QTime::currentTime();
+    time = time.addSecs(600);
+    ui->timeEdit->setTime(time);
 }
 
 
