@@ -1,4 +1,5 @@
 ﻿#include "trayicon.h"
+#include "mainwindow.h"
 #include "qmutex.h"
 #include "qmenu.h"
 #include "qapplication.h"
@@ -41,7 +42,7 @@ void TrayIcon::iconIsActived(QSystemTrayIcon::ActivationReason reason)
     }
     case QSystemTrayIcon::DoubleClick:
     {
-        mainWidget->showNormal();
+        qobject_cast<MainWindow*>(mainWidget)->slotShowWindow();
         break;
     }
     default:
