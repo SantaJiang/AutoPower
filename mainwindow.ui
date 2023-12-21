@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>AutoPower</string>
+   <string>AutoPower V1.0.0</string>
   </property>
   <property name="windowIcon">
    <iconset>

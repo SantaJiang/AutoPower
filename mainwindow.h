@@ -51,6 +51,8 @@ private slots:
     void slotTimeOut();
 
 private:
+    double getWindowScaleFactor();
+    void reSetupUi();
     void initDateTime();
 
 private:
