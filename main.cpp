@@ -8,6 +8,7 @@ int main(int argc, char *argv[])
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
     QApplication a(argc, argv);
+    a.setFont(QFont("Microsoft Yahei", 9));
 
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();

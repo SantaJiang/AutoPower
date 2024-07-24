@@ -2,6 +2,7 @@ QT       += core gui
 
 win32:{
 QT       += winextras
+LIBS     += -lUser32 -lPowrProf
 }
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -12,12 +13,20 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     powerop.cpp \
+    schedule/customdateedit.cpp \
+    schedule/lunarcalendarinfo.cpp \
+    schedule/minicalendaritem.cpp \
+    schedule/minicalendarwidget.cpp \
     trayicon.cpp \
     worker.cpp
 
 HEADERS += \
     mainwindow.h \
     powerop.h \
+    schedule/customdateedit.h \
+    schedule/lunarcalendarinfo.h \
+    schedule/minicalendaritem.h \
+    schedule/minicalendarwidget.h \
     trayicon.h \
     worker.h
 

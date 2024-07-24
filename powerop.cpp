@@ -1,7 +1,7 @@
 #include "powerop.h"
 
 #ifdef Q_OS_WIN
-#include <Windows.h>
+#include <windows.h>
 #include "powrprof.h"
 #include "winuser.h"
 #include "processthreadsapi.h"

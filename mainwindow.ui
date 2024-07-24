@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>AutoPower V1.0.0</string>
+   <string>AutoPower V1.1.0</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -337,7 +337,7 @@ border: 0px;</string>
               <number>100</number>
              </property>
              <item>
-              <widget class="QDateEdit" name="dateEdit">
+              <widget class="CustomDateEdit" name="dateEdit">
                <property name="font">
                 <font>
                  <family>Microsoft YaHei</family>
@@ -745,6 +745,13 @@ border: 0px;</string>
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CustomDateEdit</class>
+   <extends>QDateEdit</extends>
+   <header location="global">schedule/customdateedit.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
