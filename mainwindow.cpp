@@ -288,4 +288,22 @@ void MainWindow::initDateTime()
     ui->timeEdit->setTime(time);
 }
 
+void MainWindow::on_dateEdit_dateChanged(const QDate &date)
+{
+    ui->radioButton_setTime->setChecked(true);
+}
 
+void MainWindow::on_timeEdit_timeChanged(const QTime &time)
+{
+    ui->radioButton_setTime->setChecked(true);
+}
+
+void MainWindow::on_spinBox_hour_valueChanged(int arg1)
+{
+    ui->radioButton_fromNow->setChecked(true);
+}
+
+void MainWindow::on_spinBox_min_valueChanged(int arg1)
+{
+    ui->radioButton_fromNow->setChecked(true);
+}

@@ -49,6 +49,10 @@ private slots:
     void on_radioButton_hibernate_clicked();
     void on_radioButton_reboot_clicked();
     void slotTimeOut();
+    void on_dateEdit_dateChanged(const QDate &date);
+    void on_spinBox_hour_valueChanged(int arg1);
+    void on_spinBox_min_valueChanged(int arg1);
+    void on_timeEdit_timeChanged(const QTime &time);
 
 private:
     double getWindowScaleFactor();
