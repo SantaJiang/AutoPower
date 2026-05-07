@@ -1,10 +1,8 @@
 ﻿#include "trayicon.h"
-#include "mainwindow.h"
 #include "qmutex.h"
 #include "qmenu.h"
 #include "qapplication.h"
 #include <QApplication>
-#pragma execution_character_set("utf-8")
 
 QScopedPointer<TrayIcon> TrayIcon::self;
 TrayIcon *TrayIcon::Instance()
@@ -42,7 +40,7 @@ void TrayIcon::iconIsActived(QSystemTrayIcon::ActivationReason reason)
     }
     case QSystemTrayIcon::DoubleClick:
     {
-        qobject_cast<MainWindow*>(mainWidget)->slotShowWindow();
+        mainWidget->showNormal();
         break;
     }
     default:
@@ -66,7 +64,7 @@ void TrayIcon::setExitDirect(bool exitDirect)
 void TrayIcon::setMainWidget(QWidget *mainWidget)
 {
     this->mainWidget = mainWidget;
-    menu->addAction(tr("MainWindow"), mainWidget, SLOT(slotShowWindow()));
+    menu->addAction(tr("MainWindow"), mainWidget, SLOT(showNormal()));
 
     if (exitDirect)
     {

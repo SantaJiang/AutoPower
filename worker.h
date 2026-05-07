@@ -3,6 +3,7 @@
 
 #include <QThread>
 #include <QDateTime>
+#include <atomic>
 
 class Worker : public QThread
 {
@@ -10,6 +11,7 @@ class Worker : public QThread
 public:
     explicit Worker(QObject *parent = nullptr);
     void setTargetDateTime(QDateTime time);
+    void stop();
     void run();
 
 signals:
@@ -17,6 +19,7 @@ signals:
 
 private:
     QDateTime m_time;
+    std::atomic_bool m_stopRequested{false};
 };
 
 #endif // WORKER_H

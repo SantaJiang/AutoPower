@@ -3,4 +3,7 @@
         <file>logo.ico</file>
         <file>fontawesome-webfont.ttf</file>
     </qresource>
+    <qresource prefix="/i18n">
+        <file>AutoPower_zh_CN.qm</file>
+    </qresource>
 </RCC>
