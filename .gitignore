@@ -1,0 +1,6 @@
+.DS_Store
+.qtcreator/
+build/
+build-*/
+cmake-build-*/
+CMakeUserPresets.json

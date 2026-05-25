@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=AutoPower
+Comment=Scheduled shutdown, restart, sleep, and monitor power utility
+Comment[zh_CN]=定时关机、重启、睡眠和关闭显示器工具
+Icon=autopower
+Exec=AutoPower
+StartupNotify=true
+Categories=Utility;System;
+Terminal=false

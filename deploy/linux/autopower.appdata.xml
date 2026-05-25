@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+    <id>com.santa.autopower</id>
+    <metadata_license>CC0-1.0</metadata_license>
+    <project_license>GPL-3.0-or-later</project_license>
+    <name>AutoPower</name>
+    <summary>Cross-platform scheduled power operation utility</summary>
+    <description>
+        <p>AutoPower schedules shutdown, restart, hibernate, sleep, and monitor power operations from a Qt desktop interface.</p>
+    </description>
+    <url type="homepage">https://github.com/SantaJiang/AutoPower</url>
+    <launchable type="desktop-id">autopower.desktop</launchable>
+    <releases>
+        <release version="1.2.0" date="2026-05-25"/>
+    </releases>
+</component>
